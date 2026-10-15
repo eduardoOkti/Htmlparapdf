@@ -10,19 +10,10 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v4
 
-    - name: Set up Java JDK
-      uses: actions/setup-java@v4
+    - name: Build Extension with Rush Action
+      uses: shreyashsaitwal/rush-action@main
       with:
-        distribution: 'temurin'
-        java-version: '17'
-
-    - name: Install Rush CLI
-      run: |
-        curl -fsSL https://raw.githubusercontent.com/zainulhassan815/rush-cli/main/scripts/install/install.sh | bash
-        echo "$HOME/.rush/bin" >> $GITHUB_PATH
-
-    - name: Build Extension with Rush
-      run: rush build
+        token: ${{ secrets.GITHUB_TOKEN }}
 
     - name: Upload .aix artifact
       uses: actions/upload-artifact@v4
