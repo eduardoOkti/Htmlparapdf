@@ -23,7 +23,7 @@ jobs:
 
     - name: Install Rush CLI
       run: |
-        git clone https://github.com/mit-cml/rush.git
+        git clone https://x-access-token@github.com/mit-cml/rush.git
         cd rush
         npm install
         npm link
