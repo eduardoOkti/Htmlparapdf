@@ -22,11 +22,7 @@ jobs:
         node-version: 18
 
     - name: Install Rush CLI
-      run: |
-        git clone https://x-access-token@github.com/mit-cml/rush.git
-        cd rush
-        npm install
-        npm link
+      run: npm install -g @shreyashsaitwal/rush-cli
 
     - name: Build Extension with Rush
       run: rush build
