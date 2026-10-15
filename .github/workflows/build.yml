@@ -16,7 +16,7 @@ jobs:
         node-version: 18
 
     - name: Install Rush CLI
-      run: npm install -g @appinventor-community/rush
+      run: npm install -g https://github.com/mit-cml/rush
 
     - name: Build Extension with Rush
       run: rush build
