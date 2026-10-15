@@ -5,11 +5,16 @@ plugins {
 repositories {
     google()
     mavenCentral()
+    maven { url 'https://repo.maven.apache.org/maven2' }
     maven { url 'https://jitpack.io' }
 }
 
 dependencies {
-    compileOnly files('libs/AndroidRuntime.jar')
+    // Dependência do Android SDK padrão fornecida pelo Google
+    compileOnly 'com.google.android:android:4.1.1.4'
+    
+    // Dependências do App Inventor para compilação de extensões
+    compileOnly 'com.google.appinventor:components:3.0'
 }
 
 sourceSets {
