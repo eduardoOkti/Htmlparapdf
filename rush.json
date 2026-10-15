@@ -1,0 +1,9 @@
+{
+  "name": "Htmlparapdf",
+  "version": "1.0",
+  "description": "Extensão para salvar HTML no ASD para o KOMBY",
+  "author": "Eongarelli",
+  "category": "extension",
+  "minSdkVersion": 21,
+  "license": "Apache-2.0"
+}
