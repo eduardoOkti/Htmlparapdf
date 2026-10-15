@@ -10,13 +10,16 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v4
 
-    - name: Set up Node.js
-      uses: actions/setup-node@v4
+    - name: Set up Java JDK
+      uses: actions/setup-java@v4
       with:
-        node-version: 18
+        distribution: 'temurin'
+        java-version: '17'
 
     - name: Install Rush CLI
-      run: npm install -g @shreyashsaitwal/rush-cli
+      run: |
+        curl -fsSL https://raw.githubusercontent.com/zainulhassan815/rush-cli/main/scripts/install/install.sh | bash
+        echo "$HOME/.rush/bin" >> $GITHUB_PATH
 
     - name: Build Extension with Rush
       run: rush build
