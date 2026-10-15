@@ -1,4 +1,4 @@
-name: Build Extension with Gradle
+name: Build Extension with Rush
 
 on: [push]
 
@@ -16,11 +16,19 @@ jobs:
         distribution: 'temurin'
         java-version: '17'
 
-    - name: Build Java Code
-      run: gradle build
+    - name: Set up Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: 18
 
-    - name: Upload Build Artifact
+    - name: Install Rush CLI
+      run: npm install -g https://github.com/mit-cml/rush
+
+    - name: Build Extension with Rush
+      run: rush build
+
+    - name: Upload .aix artifact
       uses: actions/upload-artifact@v4
       with:
         name: Htmlparapdf
-        path: build/libs/*.jar
+        path: out/*.aix
