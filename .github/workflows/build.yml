@@ -10,10 +10,26 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v4
 
-    - name: Build Extension with Rush Action
-      uses: shreyashsaitwal/rush-action@main
+    - name: Set up Java JDK
+      uses: actions/setup-java@v4
       with:
-        token: ${{ secrets.GITHUB_TOKEN }}
+        distribution: 'temurin'
+        java-version: '17'
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: 18
+
+    - name: Install Rush CLI
+      run: |
+        git clone https://github.com/mit-cml/rush.git
+        cd rush
+        npm install
+        npm link
+
+    - name: Build Extension with Rush
+      run: rush build
 
     - name: Upload .aix artifact
       uses: actions/upload-artifact@v4
